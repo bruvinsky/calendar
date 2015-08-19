@@ -1,0 +1,66 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Task list</h1>
+    {# total items count #}
+    <div class="count">
+        {{ pagination.getTotalItemCount }}
+    </div>
+    <table class="records_list">
+        {#<thead>#}
+        <tr>
+            <th>{{ knp_pagination_sortable(pagination, 'Id', 't.id') }}</th>
+            <th{% if pagination.isSorted('t.Name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Name', 't.name') }}</th>
+            <th>{{ knp_pagination_sortable(pagination, 'Plan', 't.plan') }}</th>
+            <th>{{ knp_pagination_sortable(pagination, 'Term', 't.term') }}</th>
+            <th>{{ knp_pagination_sortable(pagination, 'Priority', 't.priority') }}</th>
+            <th>{{ knp_pagination_sortable(pagination, 'Date', 't.date') }}</th>
+            <th>Actions</th>
+        </tr>
+        {#</thead>#}
+        {#<tbody>#}
+        {# table body #}
+        {% for task in pagination %}
+            <tr {% if loop.index is odd %}class="color-odd-even"{% endif %}>
+                <td>{{ task.id }}</td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.plan }}</td>
+                <td>{{ task.term }}</td>
+                <td>{{ task.priority }}</td>
+                <td>{% if task.date %}{{ task.date|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('task_show', { 'id': task.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('task_edit', { 'id': task.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+
+
+    </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+
+    <ul>
+        <li>
+            <a href="{{ path('task_new') }}">
+                Create a new task
+            </a>
+        </li>
+        <li>
+
+            <a href="{{ path('task_main') }}">
+                To the Calendar
+            </a>
+        </li>
+
+    </ul>
+{% endblock %}

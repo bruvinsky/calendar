@@ -1,0 +1,3 @@
+tz_scheduler:
+    resource: "@TzSchedulerBundle/Resources/config/routing.yml"
+    prefix:   /

@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h4>Please, select period</h4>
+    <h5>(default: August, 2015)</h5>
+    <form action="{{ path('task_main') }}" method="post">
+
+        <div>{{ form_row(form.month) }}</div>
+        <div>        {{ form_row(form.year) }}</div>
+        {{ form_row(form._token) }}
+
+        <input type="submit"/>
+    </form>
+{% endblock %}

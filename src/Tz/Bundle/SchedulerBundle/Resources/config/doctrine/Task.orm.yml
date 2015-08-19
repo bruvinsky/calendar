@@ -1,0 +1,21 @@
+Tz\Bundle\SchedulerBundle\Entity\Task:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: text
+        plan:
+            type: text
+        term:
+            type: integer
+        priority:
+            type: integer
+        date:
+            type: date
+    lifecycleCallbacks: {  }

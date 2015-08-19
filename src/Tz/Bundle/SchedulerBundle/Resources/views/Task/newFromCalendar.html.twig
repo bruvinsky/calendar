@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Task creation</h1>
+    <form action="{{ path('task_create') }}" method="post">
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.plan) }}
+        {{ form_row(form.term) }}
+        {{ form_row(form.priority) }}
+
+        {{ form_row(form._token) }}
+        <input id="tz_bundle_schedulerbundle_task_date_year" type="hidden"
+               name="tz_bundle_schedulerbundle_task[date][year]" value="{{ y }}">
+        <input id="tz_bundle_schedulerbundle_task_date_month" type="hidden"
+               name="tz_bundle_schedulerbundle_task[date][month]" value="{{ m }}">
+        <input id="tz_bundle_schedulerbundle_task_date_day" type="hidden"
+               name="tz_bundle_schedulerbundle_task[date][day]" value="{{ d }}">
+        <input type="submit"/>
+    </form>
+
+{% endblock %}

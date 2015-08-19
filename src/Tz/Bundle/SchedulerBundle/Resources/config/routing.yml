@@ -1,0 +1,7 @@
+tz_scheduler_task:
+    resource: "@TzSchedulerBundle/Resources/config/routing/task.yml"
+    prefix:   /task
+
+tz_scheduler_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: TzSchedulerBundle:Default:index }
